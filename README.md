@@ -19,3 +19,7 @@
 | **功能**         | 提供前端使用者介面，並向伺服器發送請求。| 伺服器提供即時訊息的功能 (例如 Socket.io)。| 提供即時訊息的後端服務，支援 WebSocket 或其他通訊協議。|
 | **Package**       | React.js、Node.js、Socket.io     | Node.js、Express、Socket.io         | Golang、Socket.io (或其他庫) |
 | **啟動後的操作** | 在瀏覽器中運行 React 應用。       | 啟動後可以接受來自 React 客戶端的請求。  | 啟動後可以接受來自客戶端的 WebSocket 請求，並處理即時通訊。 |
+
+# Remark Git
+- GitHub 
+- GitLab CICD
