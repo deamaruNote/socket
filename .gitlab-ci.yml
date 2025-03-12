@@ -48,7 +48,7 @@ server_install:
 
 # 部署後端
 server_deploy:
-  stage: deploy
+  stage: build
   script:
   script:
     - cd server
