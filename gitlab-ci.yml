@@ -1,14 +1,17 @@
-stages:
-  - install
-  - build
+test:
+  script: echo "Hello!"
 
-variables:
-  NODE_VERSION: "18"
-  # GO_VERSION: "1.21"
+# stages:
+#   - install
+#   - build
 
-cache:
-  paths:
-    - client/node_modules/
+# variables:
+#   NODE_VERSION: "18"
+#   # GO_VERSION: "1.21"
+
+# cache:
+#   paths:
+#     - client/node_modules/
     # - server/node_modules/
 
 # before_script:
@@ -17,15 +20,15 @@ cache:
 #   - apt-get install -y nodejs
 #   - curl -fsSL https://golang.org/dl/go$GO_VERSION.linux-amd64.tar.gz | tar -C /usr/local -xzf -
 
-# 安裝前端
-client_install:
-  stage: install
-  script:
-    - cd client
-    - npm install
-  artifacts:
-    paths:
-      - client/node_modules/
+# # 安裝前端
+# client_install:
+#   stage: install
+#   script:
+#     - cd client
+#     - npm install
+#   artifacts:
+#     paths:
+#       - client/node_modules/
 
 # # 安裝後端
 # server_install:
@@ -44,15 +47,15 @@ client_install:
 #     - cd backup
 #     - go mod tidy
 
-# 部署前端
-client_deploy:
-  stage: build
-  script:
-    - cd client
-    - npm run build
-  artifacts:
-    paths:
-      - client/dist/
+# # 部署前端
+# client_deploy:
+#   stage: build
+#   script:
+#     - cd client
+#     - npm run build
+#   artifacts:
+#     paths:
+#       - client/dist/
 
 # # 部署後端
 # server_deploy:
