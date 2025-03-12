@@ -33,3 +33,23 @@ client_deploy:
   artifacts:
     paths:
       - client/dist/
+
+# 安裝後端
+server_install:
+  stage: install
+  script:
+    - cd server
+    - npm install
+  artifacts:
+    paths:
+      - server/node_modules/
+
+# 部署後端
+server_deploy:
+  stage: deploy
+  script:
+    - cd server
+    - npm install --production
+    - pm2 restart index.js || pm2 start index.js --name my-server
+  only:
+    - main
