@@ -8,6 +8,7 @@ variables:
 cache:
   paths:
     - client/node_modules/
+    - server/node_modules/
 
 before_script:
   - apt-get update -qq && apt-get install -y curl
@@ -40,6 +41,7 @@ server_install:
   script:
     - cd server
     - npm install
+    - npm install nodemon --save-dev 
   artifacts:
     paths:
       - server/node_modules/
@@ -48,8 +50,9 @@ server_install:
 server_deploy:
   stage: deploy
   script:
+  script:
     - cd server
-    - npm install --production
-    - pm2 restart index.js || pm2 start index.js --name my-server
+    - npm install --production   # 安裝生產環境的依賴
+    - nohup npm run start &       # 在背景運行 nodemon 來啟動後端伺服器
   only:
     - main
