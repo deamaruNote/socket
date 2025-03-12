@@ -1,0 +1,35 @@
+stages:
+  - install
+  - build
+
+variables:
+  NODE_VERSION: "18"
+
+cache:
+  paths:
+    - client/node_modules/
+
+before_script:
+  - apt-get update -qq && apt-get install -y curl
+  - curl -fsSL https://deb.nodesource.com/setup_$NODE_VERSION.x | bash -
+  - apt-get install -y nodejs
+
+# 安裝前端
+client_install:
+  stage: install
+  script:
+    - cd client
+    - npm install
+  artifacts:
+    paths:
+      - client/node_modules/
+
+# 部署前端
+client_deploy:
+  stage: build
+  script:
+    - cd client
+    - npm run build
+  artifacts:
+    paths:
+      - client/dist/
